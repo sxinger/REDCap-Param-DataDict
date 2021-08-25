@@ -1,0 +1,17 @@
+Variable / Field Name,Form Name,Section Header,Field Type,Field Label,"Choices, Calculations, OR Slider Labels",Field Note,Text Validation Type OR Show Slider Number,Text Validation Min,Text Validation Max,Identifier?,Branching Logic (Show field only if...),Required Field?,Custom Alignment,Question Number (surveys only),Matrix Group Name,Matrix Ranking?,Field Annotation
+record_id_1,template,,text,Record ID,,,,,,,,,,,,,
+gpc_site_1,template,,dropdown,Which GPC site are you from? ,"1, University of Kansas Medical Center (KUMC) | 2, University of Texas Health Sciences Center at San Antonio (UTHSCSA) | 3, University of Iowa Healthcare (UIOWA) | 4, University of Missouri (MU) | 5, University of Nebraska Medical Center (UNMC) | 6, University of Texas Southwestern Medical Center (UTSW) | 7, Marshfield Clinic (MCRI) | 8, Indiana University and Regenstrief Institute (IU) | 9, Medical College of Wisconsin (MCW) | 10, Allina Health (Allina) | 11, Intermountain Healthcare (IHC) | 12, University of Utah (Utah) | 14, University of Houston (UH) | 15, Washington University (WashU) | 13, Other Institution out of GPC network",,,,,,,,,,,,
+extract_1,template,,yesno,Is your site still actively extracting the NAACCR Registry Data data on a regular basis?  ,,,,,,,,y,,,,,
+extract_plan_1,template,,yesno,Do you plan to extract NAACCR Registry Data data in 6 month to 1 year? ,,,,,,,[extract_1]='0',,,,,,
+freq_1,template,,dropdown,How often do you update/refresh NAACCR Registry Data data?,"1, daily | 2, weekly | 3, monthly | 4, quarterly | 5, yearly",,,,,,[extract_1]='1',,,,,,
+source_detail_1,template,,notes,"Please provide more details regarding your source system where NAACCR Registry Data data is or will be extracted, such as: 
+- Source System (e.g. Cerner Millennium)
+- Source Table (e.g. Encounter)
+- Source Field/Column (e.g. disct_dt_tm)
+
+Leave this field as blank if you are not sure or plan to do more investigation.",,,,,,,[extract_1]='1' or [extract_plan_1]='1',,,,,,
+cdm_1,template,,yesno,"Do you currently ETL (extract, transform, load) NAACCR Registry Data data in to PCORnet common data model? ",,,,,,,,y,,,,,
+cdm_plan_1,template,,yesno,"Do you plan to ETL (extract, transform, load) NAACCR Registry Data data in to PCORnet CDM in 6 months to 1 year?",,,,,,,[cdm_1] = '0',,,,,,
+cdm_tbl_1,template,,checkbox,Which one(s) of the following CDM tables have you augmented with NAACCR Registry Data data? ,"1, DEMOGRAPHIC | 2, ENROLLMENT | 3, ENCOUNTER | 4, DIAGNOSIS | 5, PROCEDURES | 6, VITAL | 7, DISPENSING | 8, LAB_RESULT_CM | 9, CONDITION | 10, PRO_CM | 11, PRESCRIBING | 12, PCORNET_TRIAL | 13, DEATH | 14, DEATH_CAUSE | 15, MED_ADMINE | 16, PROVIDER | 17, OBS_CLIN | 18, OBS_GEN | 19, HASH_TOKEN | 20, LDS_ADDRESS_HISTORY | 21, IMMUNIZATION | 22, LAB_HISTORY | 23, A Supplemental private table (e.g. PRIVATE_TUMOR_TABLE, PRIVATE_DEMOGRAPHIC)",,,,,,[cdm_1] = '1',,,,,,
+i2b2_1,template,,yesno,"Do you currently ETL (extract, transform, load) NAACCR Registry Data data in to i2b2 data models?",,,,,,,,,,,,,
+i2b2_key_1,template,,notes,What is  the concept identifier (e.g. prefix or concept_path string chunk)  that can be used to re-identify NAACCR Registry Data data? ,,,,,,,[i2b2_1] = '1',,,,,,
